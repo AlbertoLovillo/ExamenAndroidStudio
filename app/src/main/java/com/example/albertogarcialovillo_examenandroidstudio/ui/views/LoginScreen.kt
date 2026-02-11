@@ -2,6 +2,7 @@ package com.example.albertogarcialovillo_examenandroidstudio.ui.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -47,7 +49,9 @@ fun LoginScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(20.dp)
+            .padding(20.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
             modifier = Modifier.size(300.dp),
@@ -58,7 +62,7 @@ fun LoginScreen(
         Spacer(Modifier.height(20.dp))
 
         Text(
-            text = "INICIA SESION",
+            text = "Inicia sesion",
             fontSize = 40.sp
         )
 
@@ -70,7 +74,7 @@ fun LoginScreen(
                 .height(40.dp),
             value = uiState.email,
             onValueChange = { viewModel.actualizarEmail(it) },
-            label = "Email"
+            label = { Text("Email") }
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -81,13 +85,15 @@ fun LoginScreen(
                 .height(40.dp),
             value = uiState.contrasenya,
             onValueChange = { viewModel.actualizarContasenya(it) },
-            label = "Email",
-            trailingIcon = Text(
-                modifier = Modifier.clickable { hide = !hide },
-                text = "Mostrar"
-            ),
+            label = { Text("Contraseña") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            visualTransformation = if (hide) PasswordVisualTransformation() else VisualTransformation.None
+            visualTransformation = if (hide) PasswordVisualTransformation() else VisualTransformation.None,
+            trailingIcon = {
+                Text(
+                    modifier = Modifier.clickable { hide = !hide },
+                    text = "Mostrar"
+                )
+            },
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -104,7 +110,9 @@ fun LoginScreen(
                 disabledContentColor = Color.Black
             ),
         ) {
-
+            Text(
+                text = "Iniciar sesion"
+            )
         }
     }
 }

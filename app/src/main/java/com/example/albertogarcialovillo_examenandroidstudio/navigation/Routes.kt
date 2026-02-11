@@ -11,8 +11,5 @@ sealed class Routes : NavKey {
     data object Home : Routes()
 
     @Serializable
-    data object Detalles : Routes()
-
-    @Serializable
     data object Nuevo : Routes()
 }

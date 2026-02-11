@@ -4,7 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.example.albertogarcialovillo_examenandroidstudio.ui.views.HomeScreen
 import com.example.albertogarcialovillo_examenandroidstudio.ui.views.LoginScreen
+import com.example.albertogarcialovillo_examenandroidstudio.ui.views.NuevoScreen
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -23,15 +25,15 @@ fun AppNavigation(auth: FirebaseAuth) {
             }
 
             entry<Routes.Home> {
-
-            }
-
-            entry<Routes.Detalles> {
-
+                HomeScreen(
+                    goNuevo = { backStack.add(Routes.Nuevo) }
+                )
             }
 
             entry<Routes.Nuevo> {
-
+                NuevoScreen(
+                    goBack = { backStack.removeLastOrNull() }
+                )
             }
         }
     )
