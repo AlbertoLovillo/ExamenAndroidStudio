@@ -1,6 +1,5 @@
 package com.example.albertogarcialovillo_examenandroidstudio.ui.views
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -37,8 +36,10 @@ fun NuevoScreen(
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(20.dp))
+
         Text(
-            text = "Plantilla temporada 25/26",
+            text = "Nuevo jugador",
             fontSize = 40.sp
         )
 
@@ -117,7 +118,7 @@ fun NuevoScreen(
                 ),
             ) {
                 Text(
-                    text = "Agregar jugador"
+                    text = "Agregar"
                 )
             }
 

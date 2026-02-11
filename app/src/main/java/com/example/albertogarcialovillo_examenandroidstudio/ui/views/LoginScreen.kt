@@ -2,7 +2,6 @@ package com.example.albertogarcialovillo_examenandroidstudio.ui.views
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.albertogarcialovillo_examenandroidstudio.R
+import com.example.albertogarcialovillo_examenandroidstudio.ui.components.AlertaFallo
 import com.example.albertogarcialovillo_examenandroidstudio.viewmodel.LoginViewModel
 import com.google.firebase.auth.FirebaseAuth
 
@@ -119,5 +119,9 @@ fun LoginScreen(
                 text = "Iniciar sesion"
             )
         }
+    }
+
+    if(uiState.mostrarError) {
+        AlertaFallo()
     }
 }

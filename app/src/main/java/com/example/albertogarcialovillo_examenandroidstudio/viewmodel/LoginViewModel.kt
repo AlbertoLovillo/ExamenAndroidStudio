@@ -33,5 +33,8 @@ class LoginViewModel : ViewModel() {
             .addOnSuccessListener {
                 goHome()
             }
+            .addOnFailureListener {
+                entrarMostrarError()
+            }
     }
 }

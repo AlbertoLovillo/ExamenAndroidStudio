@@ -3,10 +3,12 @@ package com.example.albertogarcialovillo_examenandroidstudio.ui.components
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -42,19 +44,29 @@ fun CardJugador(
             disabledContainerColor = Color(0xFFF2FCEE),
             disabledContentColor = Color.Black
         ),
-        modifier = Modifier.fillMaxWidth().height(200.dp)
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(300.dp)
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(200.dp)
+                .height(300.dp)
                 .padding(10.dp)
         ) {
-            AsyncImage(
-                model = imagenUrl,
-                contentDescription = null,
-                modifier = Modifier.size(100.dp)
-            )
+            Row(Modifier.fillMaxWidth()) {
+                Spacer(modifier = Modifier.weight(1f))
+
+                AsyncImage(
+                    model = imagenUrl,
+                    contentDescription = null,
+                    modifier = Modifier.height(200.dp)
+                )
+
+                Spacer(modifier = Modifier.weight(1f))
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
 
             Row(Modifier.fillMaxWidth()) {
                 Button(
@@ -73,29 +85,35 @@ fun CardJugador(
                     )
                 }
 
+                Spacer(modifier = Modifier.width(10.dp))
+
                 Column() {
                     Text(
                         text = nombre,
-                        fontSize = 40.sp
+                        fontSize = 20.sp
                     )
 
                     Text(
                         text = nacionalidad,
-                        fontSize = 30.sp
+                        fontSize = 15.sp
                     )
 
                     Text(
                         text = posicion,
-                        fontSize = 30.sp
+                        fontSize = 15.sp
                     )
                 }
+
+                Spacer(modifier = Modifier.width(10.dp))
 
                 Icon(
                     painter = painterResource(R.drawable.outline_auto_delete_24),
                     contentDescription = null,
-                    modifier = Modifier.clickable {
-                        viewModel.eliminarFirestore(id)
-                    }
+                    modifier = Modifier
+                        .clickable {
+                            viewModel.eliminarFirestore(id)
+                        }
+                        .size(20.dp)
                 )
             }
         }

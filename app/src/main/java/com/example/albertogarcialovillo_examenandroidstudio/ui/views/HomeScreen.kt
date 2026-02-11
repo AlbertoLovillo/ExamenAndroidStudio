@@ -1,6 +1,5 @@
 package com.example.albertogarcialovillo_examenandroidstudio.ui.views
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -50,12 +49,8 @@ fun HomeScreen(
         LazyColumn(
             Modifier
                 .fillMaxWidth()
-                .height(400.dp)) {
-            item(
-                content = {
-                    Text("hola")
-                }
-            )
+                .height(600.dp)
+        ) {
             items(jugador) { item ->
                 CardJugador(
                     id = item.id,
@@ -66,11 +61,6 @@ fun HomeScreen(
                     imagenUrl = item.imagenUrl
                 )
             }
-            item(
-                content = {
-                    Text("adios")
-                }
-            )
         }
 
         Button(
