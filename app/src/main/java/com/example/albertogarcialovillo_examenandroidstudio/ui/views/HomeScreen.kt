@@ -36,19 +36,29 @@ fun HomeScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(50.dp))
+
         Text(
             text = "Plantilla temporada 25/26",
-            fontSize = 40.sp
+            fontSize = 25.sp
         )
 
         Spacer(Modifier.height(20.dp))
 
-        LazyColumn(Modifier.fillMaxWidth().height(400.dp)) {
+        LazyColumn(
+            Modifier
+                .fillMaxWidth()
+                .height(400.dp)) {
+            item(
+                content = {
+                    Text("hola")
+                }
+            )
             items(jugador) { item ->
                 CardJugador(
+                    id = item.id,
                     nombre = item.nombre,
                     numero = item.numero,
                     nacionalidad = item.nacionalidad,
@@ -56,6 +66,11 @@ fun HomeScreen(
                     imagenUrl = item.imagenUrl
                 )
             }
+            item(
+                content = {
+                    Text("adios")
+                }
+            )
         }
 
         Button(
@@ -71,7 +86,7 @@ fun HomeScreen(
             ),
         ) {
             Text(
-                text = "Iniciar sesion"
+                text = "Agregar jugador"
             )
         }
     }

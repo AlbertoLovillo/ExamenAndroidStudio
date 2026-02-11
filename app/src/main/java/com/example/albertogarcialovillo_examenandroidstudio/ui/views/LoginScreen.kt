@@ -50,16 +50,17 @@ fun LoginScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(100.dp))
+
         Image(
-            modifier = Modifier.size(300.dp),
+            modifier = Modifier.size(200.dp),
             painter = painterResource(R.drawable.logo),
             contentDescription = null,
         )
 
-        Spacer(Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(
             text = "Inicia sesion",
@@ -71,10 +72,14 @@ fun LoginScreen(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(60.dp),
             value = uiState.email,
             onValueChange = { viewModel.actualizarEmail(it) },
-            label = { Text("Email") }
+            label = {
+                Text(
+                    text = "Email",
+                    modifier = Modifier.padding(5.dp)
+                ) }
         )
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -82,7 +87,7 @@ fun LoginScreen(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(60.dp),
             value = uiState.contrasenya,
             onValueChange = { viewModel.actualizarContasenya(it) },
             label = { Text("Contraseña") },

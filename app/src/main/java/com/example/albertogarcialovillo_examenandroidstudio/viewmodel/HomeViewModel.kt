@@ -41,17 +41,22 @@ class HomeViewModel : ViewModel() {
         _uiState.update { it.copy(imagenUrl = valor) }
     }
 
+    fun cleanState() {
+        _uiState.value = HomeUiState()
+    }
+
     fun leerFirestore() {
         jugadorCollection.addSnapshotListener { snapshot, error ->
             if (error != null) {
                 return@addSnapshotListener
             }
             if (snapshot != null) {
-                val jugdorList = snapshot.documents.mapNotNull { doc ->
+                val jugadorList = snapshot.documents.mapNotNull { doc ->
                     val jugador = doc.toObject(Jugador::class.java)
                     jugador?.id = doc.id
                     jugador
                 }
+                _jugador.value = jugadorList
             }
         }
     }
@@ -64,7 +69,7 @@ class HomeViewModel : ViewModel() {
             posicion = _uiState.value.posicion,
             imagenUrl = _uiState.value.imagenUrl,
         )
-        jugadorCollection.add(jugador)
+        jugadorCollection.add(jugador).addOnSuccessListener { cleanState() }
     }
 
     fun eliminarFirestore(id: String) {

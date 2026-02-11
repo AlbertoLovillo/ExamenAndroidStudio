@@ -35,7 +35,6 @@ fun NuevoScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
@@ -43,10 +42,12 @@ fun NuevoScreen(
             fontSize = 40.sp
         )
 
+        Spacer(modifier = Modifier.height(20.dp))
+
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(60.dp),
             value = uiState.nombre,
             onValueChange = { viewModel.actualizarNombre(it) },
             label = { Text("Nombre") }
@@ -57,7 +58,7 @@ fun NuevoScreen(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(60.dp),
             value = "${uiState.numero}",
             onValueChange = { viewModel.actualizarNumero(it.toInt()) },
             label = { Text("Numero") }
@@ -68,7 +69,7 @@ fun NuevoScreen(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(60.dp),
             value = uiState.nacionalidad,
             onValueChange = { viewModel.actualizarNacionalidad(it) },
             label = { Text("Posicion") }
@@ -79,7 +80,7 @@ fun NuevoScreen(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(60.dp),
             value = uiState.posicion,
             onValueChange = { viewModel.actualizarPosicion(it) },
             label = { Text("Nacionalidad") }
@@ -90,7 +91,7 @@ fun NuevoScreen(
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(60.dp),
             value = uiState.imagenUrl,
             onValueChange = { viewModel.actualizarImagenUrl(it) },
             label = { Text("URL Imagen") }
@@ -104,7 +105,10 @@ fun NuevoScreen(
                     .fillMaxWidth()
                     .height(40.dp)
                     .weight(1f),
-                onClick = { viewModel.anyadirFirestore() },
+                onClick = {
+                    viewModel.anyadirFirestore()
+                    goBack()
+                },
                 colors = ButtonColors(
                     containerColor = Color(0xFF27D21F),
                     contentColor = Color.Black,
