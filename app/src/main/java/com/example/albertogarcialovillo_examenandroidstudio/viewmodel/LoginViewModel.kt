@@ -2,6 +2,7 @@ package com.example.albertogarcialovillo_examenandroidstudio.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.albertogarcialovillo_examenandroidstudio.models.LoginUiState
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -27,4 +28,10 @@ class LoginViewModel : ViewModel() {
         _uiState.update { it.copy(mostrarError = false) }
     }
 
+    fun iniciarSesion(auth: FirebaseAuth, goHome: () -> Unit) {
+        auth.signInWithEmailAndPassword(_uiState.value.email, _uiState.value.contrasenya)
+            .addOnSuccessListener {
+                goHome()
+            }
+    }
 }

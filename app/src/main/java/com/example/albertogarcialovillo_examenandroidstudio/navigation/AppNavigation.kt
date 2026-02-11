@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
 import androidx.navigation3.ui.NavDisplay
+import com.example.albertogarcialovillo_examenandroidstudio.ui.views.LoginScreen
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -15,7 +16,10 @@ fun AppNavigation(auth: FirebaseAuth) {
         onBack = { backStack.removeLastOrNull() },
         entryProvider = entryProvider {
             entry<Routes.Login> {
-
+                LoginScreen(
+                    auth = auth,
+                    goHome = { backStack.add(Routes.Home) }
+                )
             }
 
             entry<Routes.Home> {
